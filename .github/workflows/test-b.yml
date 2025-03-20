@@ -1,0 +1,24 @@
+name: Hello World Pipeline
+
+# Trigger the workflow when there is a push to the 'main' branch
+on:
+  workflow_dispatch:  # This allows the workflow to be triggered manually or via API
+    inputs:
+      branch:
+        description: 'Branch to build'
+        required: true
+        default: 'main'
+
+# Define the jobs in the pipeline
+jobs:
+  print_hello_world:
+    runs-on: ubuntu-latest  # Set up the environment (you can also use other OS like 'windows-latest' or 'macos-latest')
+
+    steps:
+    # Step 1: Checkout the code (even though there's no code to check out, it's a good practice to use this)
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    # Step 2: Print Hello, World!
+    - name: Print Hello World
+      run: echo "Hello, World!"
